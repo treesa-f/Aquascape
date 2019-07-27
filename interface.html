@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Aquascape</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="icon" href="favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="interface.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:100,400,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    </head>
+    <body>
+        <video autoplay muted loop id="video">
+            <source src="video.mp4" type="video/mp4">
+        </video>
+
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div style="text-align: center; padding-right: 20px; "><img src="profile.png" height="150px">
+            <span class="heading"><br>Welcome, Christian!</span></div>
+            <a href="#" class="text" style="color: white;">Account</a>
+            <a href="#" class="text" style="color: white;">Settings</a>
+            <a href="#" class="text" style="color: white;"><span id="showMap">Map</span></a>
+            <a href="#" class="text" style="color: white;"><span id="showCust">Customise</span></a>
+        </div>
+          
+        <span style="font-size:30px;cursor:pointer; padding: 10px; color: white" onclick="openNav()" id="hamburger">&#9776;</span><br>
+
+        <div id="time" data-aos="fade-down"></div>
+        <div id="mapHolder">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeMap()" style="font-size: 30px; padding-left:420px;color:black">&times;</a>
+            <h1 id="heading">Track your Aquadrone's path</h1>
+            <div id="map" style="background-color: white; width: 100%; height: 80%;"></div>
+        </div>
+
+        <div id="customiser">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeCust()" style="font-size: 30px; padding-left:420px;color:black">&times;</a>
+            <h1 id="heading">Customise your dashboard</h1>
+            <form id="form">
+                <div class="row">
+                    <h1 class="option items">Time: </h1>       
+                    <div class="form-check items">
+                        <input class="form-check-input" type="radio" name="time" id="date1" value="option1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            24h
+                        </label>
+                    </div>
+                    <div class="form-check items">
+                        <input class="form-check-input" type="radio" name="time" id="date2" value="option2">
+                        <label class="form-check-label" for="exampleRadios2">
+                            12h
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <h1 class="option items">Show Date: </h1>       
+                    <div class="form-check items">
+                        <input class="form-check-input" type="radio" name="date" id="date1" value="option1" >
+                        <label class="form-check-label" for="exampleRadios1">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="form-check items">
+                        <input class="form-check-input" type="radio" name="date" id="date2" value="option2" checked>
+                        <label class="form-check-label" for="exampleRadios2">
+                            No
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <h1 class="option items">Font Size: </h1>       
+                    <select class="form-control items" style="width: 50%">
+                        <option>Small</option>
+                        <option>Medium</option>
+                        <option>Large</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <h1 class="option items">Font Colour: </h1> 
+                    <input name="Color Picker" type="color"/>
+                </div>
+                <div class="row">
+                    <h1 class="option items">Sound: </h1>       
+                    <div class="form-check items">
+                        <input class="form-check-input" type="radio" name="date" id="date1" value="option1" >
+                        <label class="form-check-label" for="exampleRadios1">
+                            On
+                        </label>
+                    </div>
+                    <div class="form-check items">
+                        <input class="form-check-input" type="radio" name="date" id="date2" value="option2" checked>
+                        <label class="form-check-label" for="exampleRadios2">
+                            Off
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div id="stat">
+            <div class="column" data-aos="fade-down" id="trash">
+                <img class="icon" src="trash.png">
+                <h1 class="text">50 Kg</h1>
+            </div>
+            <div class="column" data-aos="fade-down">
+                <img class="icon" src="map.png" id="map">
+                <h1 class="text">10 Km</h1>
+            </div>
+        </div>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="interface.js"></script>
+        
+        <script>
+        var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: -18, lng: 147 },
+            zoom: 8
+            });
+            var flightPlanCoordinates = [
+                {lat: -17.9, lng: 146.1},
+                {lat: -18, lng: 146.15},
+                {lat: -18, lng: 146.2},
+                {lat: -18.02, lng: 146.35},
+                {lat: -18.15, lng: 146.37},
+                {lat: -18.16, lng: 146.4},
+                {lat: -18.2, lng: 146.42},
+                {lat: -18.3, lng: 146.46},
+                {lat: -18.33, lng: 146.5},
+                ];
+            var flightPath = new google.maps.Polyline({
+                path: flightPlanCoordinates,
+                geodesic: true,
+                strokeColor: '#FF0000',
+                strokeOpacity: 1.0,
+                strokeWeight: 2
+            });
+            flightPath.setMap(map);
+
+            var marker = new google.maps.Marker({
+                position: {lat: -18.33, lng: 146.5},
+                label: 'A',
+                map: map
+            });
+        }
+
+        
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNgAdtNSAMZux5YyR-vCGyVEIDiWc9-sg&callback=initMap"
+        async defer></script>
+    </body>
+</html>
