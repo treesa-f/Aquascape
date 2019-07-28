@@ -132,3 +132,14 @@ html, body{
     padding: 20px;
     font-size: 25px;
 }
+
+#pdf{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#file{
+    margin:auto;
+}
