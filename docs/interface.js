@@ -24,10 +24,11 @@ function padZeros(string){
     return string;
 }
 const output = document.getElementById('time');
+const date = document.getElementById('date');
 let time = new Date();
 
 output.innerText = padZeros(time.getHours()) + ":" + padZeros(time.getMinutes());
-console.log(output.innerText);
+console.log(time.getDate());
 setInterval(() => {
     time = new Date();
     output.innerText = padZeros(time.getHours()) + ":" + padZeros(time.getMinutes());
@@ -55,8 +56,23 @@ const customiser = document.getElementById('customiser');
 const showCust = document.getElementById('showCust');
 showCust.addEventListener('click', toggleCust);
 
+
 const handleFormChange = (event) => {
-    console.log(event.target);
+    switch (event.target.type){
+        case 'color':
+            output.style.color = event.target.value;
+            date.style.color = event.target.value;
+            break;
+        case 'radio':
+            if (event.target.value == 'yes'){
+                date.style.display = 'block';
+            } else {
+                date.style.display = 'none';
+            }
+            break;
+    }
+    console.log(event.target.type);
 };
 const form = document.getElementById('form');
 form.addEventListener('change', handleFormChange);
+

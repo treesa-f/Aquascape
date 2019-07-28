@@ -64,16 +64,33 @@ html, body{
 }
 
 #time{
-    position: fixed;
-    bottom: 0px;
-    right: 0px;
-    padding: 20px;
-    padding-right: 60px;
     font-family: 'Alegreya Sans', sans-serif;
     font-weight: 100;
     font-size: 150px;
     color: white;
+    display: block;
     text-shadow: 2px 2px #333333;
+}
+
+#timeDate{
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    text-align: right;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+}
+
+#date{
+    font-family: 'Alegreya Sans', sans-serif;
+    font-weight: 100;
+    font-size: 50px;
+    color: white;
+    display: none;
+    text-shadow: 2px 2px #333333;
+    padding-bottom: 20px;
 }
 
 #hamburger{
@@ -104,7 +121,7 @@ html, body{
 .column{
     display: flex;
     flex-direction: column;
-    padding: 0px 20px 60px 40px;
+    padding: 0px 20px 10px 40px;
     align-items: center;
     text-shadow: 2px 2px #333333;
 }
